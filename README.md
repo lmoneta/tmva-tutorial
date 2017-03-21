@@ -16,6 +16,13 @@ In order to run the tutorial we recommend that you:
 git clone https://github.com/lmoneta/tmva-tutorial.git
 ```
 
+* The notebooks used in this tutorial use the Python interface of ROOT (PyROOT) and the Javascript based extension for notebook, `JSMVA`.
+
+* More notebooks, some written also in C++, are available in the Machine Learning Gallery of SWAN, https://swan.web.cern.ch/content/machine-learning
+
+* Addition tutorials of TMVA are available in the `tutorials/tmva` directory of the main ROOT git repository. These are available also here https://root.cern.ch/doc/master/group__tutorial__tmva.html
+
+* The updated TMVA Users Guide is available on git, https://github.com/root-project/root/raw/master/documentation/tmva/UsersGuide/TMVAUsersGuide.pdf
 
 ## Swan and Jupyter notebooks quick start ##
 
@@ -29,7 +36,8 @@ In a nutshell, "SWAN (Service for Web based ANalysis) is a platform to perform i
 * If you think think the Jupyter notebook is stuck, open a terminal on swan and execute `top`: if the cpu is not being used (0%) by any of your processes, you may have to restart the Jupyter
 kernel.
 
-* There is a known issue when executing `import ROOT` in a Python notebook, which may get stuck.  However this problem should not be present anymore with the latest development version of SWAN. 
+* There is a known issue when executing `import ROOT` in a Python notebook, which may get stuck.  However this problem should not be present anymore with the latest development version of SWAN.
+
 
 **IMPORTANT:**    
 * Please only have one notebook at the time on swan (you have to select the "running" tab and shutdown the notebook when done)
