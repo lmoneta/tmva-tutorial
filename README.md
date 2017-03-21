@@ -2,10 +2,10 @@
 
 These are tutorials on TMVA given at the IML workshop (20-22 March 2017)
 
-See [https://indico.cern.ch/event/595059]
+See  https://indico.cern.ch/event/595059
 
 
-The tutorials consist of notebook which can be run on SWAN ([http://swan.cern.ch]
+The tutorials consist of notebook which can be run on SWAN ( https://swan.cern.ch )
 
 
 In order to run the tutorial we recommend that you:
@@ -22,12 +22,14 @@ git clone https://github.com/lmoneta/tmva-tutorial.git
 If you never used jupyter notebooks, you can find some quickstart information at the following links [What is a jupyter notebook?](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/What%20is%20the%20Jupyter%20Notebook.ipynb), [Notebook Basics](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb),  [Running Code](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Running%20Code.ipynb).
 
 For information on swan, see the swan website: https://swan.web.cern.ch
-In a nutshell, "SWAN (Service for Web based ANalysis) is a platform to perform interactive data analysis in the cloud". It gives you access to the LCG software stacks and to your CernBox files. 
+In a nutshell, "SWAN (Service for Web based ANalysis) is a platform to perform interactive data analysis in the cloud". It gives you access to the LCG software stacks and to your CERNBOX files. 
 
-You need to have an active CernBox to use swan (https://cernbox.cern.ch/). If you don;t have a CERN account,please contact us directly and some temporary accounts can be made available. 
+* You need to have an active **CERNBOX** to use swan (https://cernbox.cern.ch/). If you don't have a CERN account, please contact us directly and some temporary accounts can be made available. 
 
-If you think think the jupyter notebook is stuck, open a terminal on swan and execute `top`: if the cpu is not being used (0%) by any of your processes, you may have to restart the jupyter
-kernel. There is a known issue when executing `import ROOT` in a python notebook, which may get stuck.  However this problem should not be present with the latest development version of SWAN. 
+* If you think think the Jupyter notebook is stuck, open a terminal on swan and execute `top`: if the cpu is not being used (0%) by any of your processes, you may have to restart the Jupyter
+kernel.
+
+* There is a known issue when executing `import ROOT` in a Python notebook, which may get stuck.  However this problem should not be present anymore with the latest development version of SWAN. 
 
 **IMPORTANT:**    
 * Please only have one notebook at the time on swan (you have to select the "running" tab and shutdown the notebook when done)
