@@ -1,7 +1,8 @@
-# TMVA Tutorial at LIP 
+# TMVA Tutorial at the 2nd IML Machine Learning Workshop 
 
-These are tutorials on TMVA given at the LIP Data Science school  (12 March 2018)
+These are tutorials on TMVA given at the 2nd  IML Machine Learning Workshop (9 April 2018)
 
+See Workshop agenda at  https://indico.cern.ch/event/668017 
 
 
 The tutorials consist of notebook which can be run on SWAN ( https://swan.cern.ch )
@@ -12,9 +13,9 @@ In order to run the tutorial we recommend that you:
 1. Open a Terminal in SWAN 
 2. Clone your repository (it will appear in your cernbox folder)
 ```
-git clone --branch Lisbon-tutorial-2018 https://github.com/lmoneta/tmva-tutorial.git
+git clone --branch IML-tutorial-2018 https://github.com/lmoneta/tmva-tutorial.git
 ```
-* The tutorial will be in the directory tutorial_Lisbon
+* The tutorials will be in the directory tutorial_IML2018
 
 * The notebooks used in this tutorial use C++. A similar version using  Python interface of ROOT (PyROOT) and the Javascript based extension for notebook, `JSMVA` was done at the IML tutorial in 2017. they are available under the tutorial_IML2017 directory. (see also https://indico.cern.ch/event/595059 )
 
@@ -23,6 +24,7 @@ git clone --branch Lisbon-tutorial-2018 https://github.com/lmoneta/tmva-tutorial
 * Addition tutorials of TMVA are available in the `tutorials/tmva` directory of the main ROOT git repository. These are available also here https://root.cern.ch/doc/master/group__tutorial__tmva.html
 
 * The updated TMVA Users Guide is available on git, https://github.com/root-project/root/raw/master/documentation/tmva/UsersGuide/TMVAUsersGuide.pdf
+
 
 ## Swan and Jupyter notebooks quick start ##
 
@@ -36,8 +38,8 @@ In a nutshell, "SWAN (Service for Web based ANalysis) is a platform to perform i
 * If you think think the Jupyter notebook is stuck, open a terminal on swan and execute `top`: if the cpu is not being used (0%) by any of your processes, you may have to restart the Jupyter
 kernel.
 
-* There is a known issue when executing `import ROOT` in a Python notebook, which may get stuck.  However this problem should not be present anymore with the latest development version of SWAN.
-
+* For using the new Deep Learning features of TMVA (e.g. CNN) one needs now to use the *Development Bleeding Edge* Version of SWAN which is built using the current ROOT master version.
+  There is a known issue with that version now, and you might need to add this line at the beginning of the notebook:  **gSystem->Load("libblas.so")**
 
 **IMPORTANT:**    
 * Please only have one notebook at the time on swan (you have to select the "running" tab and shutdown the notebook when done)
