@@ -33,7 +33,9 @@ If you never used jupyter notebooks, you can find some quickstart information at
 For information on swan, see the swan website: https://swan.web.cern.ch
 In a nutshell, "SWAN (Service for Web based ANalysis) is a platform to perform interactive data analysis in the cloud". It gives you access to the LCG software stacks and to your CERNBOX files. 
 
-* You need to have an active **CERNBOX** to use swan (https://cernbox.cern.ch/). If you don't have a CERN account, please contact us directly and some temporary accounts can be made available. 
+* You need to have an active **CERNBOX** to use swan (https://cernbox.cern.ch/). If you don't have a CERN account, please contact us directly and some temporary accounts can be made available.
+In that case you need to feel this form to get access to the account, https://docs.google.com/forms/d/1ed4LsFBg9BmAHvfWYJDL4Svdmfk-tB-xbIyIxMPUmuc/
+We will provide you the account name and password. 
 
 * If you think think the Jupyter notebook is stuck, open a terminal on swan and execute `top`: if the cpu is not being used (0%) by any of your processes, you may have to restart the Jupyter
 kernel.
