@@ -21,31 +21,32 @@ git clone --branch IML-tutorial-2018 https://github.com/lmoneta/tmva-tutorial.gi
 
 * More notebooks, some written also in Python, are available in the Machine Learning Gallery of SWAN, https://swan.web.cern.ch/content/machine-learning
 
-* Addition tutorials of TMVA are available in the `tutorials/tmva` directory of the main ROOT git repository. These are available also here https://root.cern.ch/doc/master/group__tutorial__tmva.html
+* Additional  tutorials of TMVA are available in the `tutorials/tmva` directory of the main ROOT git repository. You can find them also here https://root.cern.ch/doc/master/group__tutorial__tmva.html
 
-* The updated TMVA Users Guide is available on git, https://github.com/root-project/root/raw/master/documentation/tmva/UsersGuide/TMVAUsersGuide.pdf
+* The updated TMVA Users Guide is available at https://root.cern.ch/download/doc/tmva/TMVAUsersGuide.pdf
 
 
 ## Swan and Jupyter notebooks quick start ##
 
-If you never used jupyter notebooks, you can find some quickstart information at the following links [What is a jupyter notebook?](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/What%20is%20the%20Jupyter%20Notebook.ipynb), [Notebook Basics](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb),  [Running Code](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Running%20Code.ipynb).
+If you have never used jupyter notebooks, you can find some quickstart information at the following links [What is a jupyter notebook?](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/What%20is%20the%20Jupyter%20Notebook.ipynb), [Notebook Basics](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb),  [Running Code](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Running%20Code.ipynb).
 
-For information on swan, see the swan website: https://swan.web.cern.ch
+For information on using SWAN, see the SWAN website: https://swan.web.cern.ch
 In a nutshell, "SWAN (Service for Web based ANalysis) is a platform to perform interactive data analysis in the cloud". It gives you access to the LCG software stacks and to your CERNBOX files. 
 
 * You need to have an active **CERNBOX** to use swan (https://cernbox.cern.ch/). If you don't have a CERN account, please contact us directly and some temporary accounts can be made available.
 In that case you need to feel this form to get access to the account, https://docs.google.com/forms/d/1ed4LsFBg9BmAHvfWYJDL4Svdmfk-tB-xbIyIxMPUmuc/
 We will provide you the account name and password. 
 
+* For using the new Deep Learning features of TMVA (e.g. CNN) one needs now to use the *Development Bleeding Edge* Version of SWAN which is built using the current ROOT master version.
+There is a known issue with that version now, and you might need to add this line at the beginning of the notebook:  **gSystem->Load("libblas.so")**
+
 * If you think think the Jupyter notebook is stuck, open a terminal on swan and execute `top`: if the cpu is not being used (0%) by any of your processes, you may have to restart the Jupyter
 kernel.
 
-* For using the new Deep Learning features of TMVA (e.g. CNN) one needs now to use the *Development Bleeding Edge* Version of SWAN which is built using the current ROOT master version.
-  There is a known issue with that version now, and you might need to add this line at the beginning of the notebook:  **gSystem->Load("libblas.so")**
 
 **IMPORTANT:**    
 * Please only have one notebook at the time on swan (you have to select the "running" tab and shutdown the notebook when done)
 * Please avoid Chrome, it has known problems restarting kernels.
-* Limit the number of events you use on swan (order 10000-100000) and the avoid expensive methods: *swan is meant for fast prototyping*. 
+* Limit the number of events you use on swan (order 10000-100000) and the avoid expensive methods: *SWAN is meant for fast prototyping*. 
      * Each swan container has 2 GB of ram assigned, using the full dataset may hit the memory limit.
 
