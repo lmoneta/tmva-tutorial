@@ -1,7 +1,8 @@
-# TMVA Tutorial at LIP 
+# TMVA Tutorial
 
-These are tutorials on TMVA given at the LIP Data Science school  (12 March 2018)
+These are tutorials on TMVA given at the IML workshop (20-22 March 2017)
 
+See  https://indico.cern.ch/event/595059
 
 
 The tutorials consist of notebook which can be run on SWAN ( https://swan.cern.ch )
@@ -12,13 +13,12 @@ In order to run the tutorial we recommend that you:
 1. Open a Terminal in SWAN 
 2. Clone your repository (it will appear in your cernbox folder)
 ```
-git clone --branch Lisbon-tutorial-2018 https://github.com/lmoneta/tmva-tutorial.git
+git clone https://github.com/lmoneta/tmva-tutorial.git
 ```
-* The tutorial will be in the directory tutorial_Lisbon
 
-* The notebooks used in this tutorial use C++. A similar version using  Python interface of ROOT (PyROOT) and the Javascript based extension for notebook, `JSMVA` was done at the IML tutorial in 2017. they are available under the tutorial_IML2017 directory. (see also https://indico.cern.ch/event/595059 )
+* The notebooks used in this tutorial use the Python interface of ROOT (PyROOT) and the Javascript based extension for notebook, `JSMVA`.
 
-* More notebooks, some written also in Python, are available in the Machine Learning Gallery of SWAN, https://swan.web.cern.ch/content/machine-learning
+* More notebooks, some written also in C++, are available in the Machine Learning Gallery of SWAN, https://swan.web.cern.ch/content/machine-learning
 
 * Addition tutorials of TMVA are available in the `tutorials/tmva` directory of the main ROOT git repository. These are available also here https://root.cern.ch/doc/master/group__tutorial__tmva.html
 
