@@ -1,8 +1,8 @@
-# TMVA Tutorial at the 2nd IML Machine Learning Workshop 
+# TMVA Tutorial
 
-These are tutorials on TMVA given at the 2nd  IML Machine Learning Workshop (9 April 2018)
+These are tutorials on TMVA given at workshops and Machine Learning events in 2017 and 2018 
 
-See Workshop agenda at  https://indico.cern.ch/event/668017 
+A recent one has been given at the 2nd IML 2018  Workshop, see  agenda at  https://indico.cern.ch/event/668017 
 
 
 The tutorials consist of notebook which can be run on SWAN ( https://swan.cern.ch )
@@ -13,9 +13,9 @@ In order to run the tutorial we recommend that you:
 1. Open a Terminal in SWAN 
 2. Clone your repository (it will appear in your cernbox folder)
 ```
-git clone --branch IML-tutorial-2018 https://github.com/lmoneta/tmva-tutorial.git
+git clone  https://github.com/lmoneta/tmva-tutorial.git
 ```
-* The tutorials will be in the directory tutorial_IML2018
+* The tutorials will be in the directory *notebooks*. Older tutorials can be retrieved using the corresponding existing git branches
 
 * The notebooks used in this tutorial use C++. A similar version using  Python interface of ROOT (PyROOT) and the Javascript based extension for notebook, `JSMVA` was done at the IML tutorial in 2017. they are available under the tutorial_IML2017 directory. (see also https://indico.cern.ch/event/595059 )
 
