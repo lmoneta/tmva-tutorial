@@ -2,7 +2,7 @@
 
 These are tutorials on TMVA given at workshops and Machine Learning events in 2017 and 2018 
 
-A recent one has been given at the 2nd IML 2018  Workshop, see  agenda at  https://indico.cern.ch/event/668017 
+The most recent one has been given at the 1st Terascale School on Machine Learning at Desy, see agenda at https://indico.desy.de/indico/event/21278/
 
 
 The tutorials consist of notebook which can be run on SWAN ( https://swan.cern.ch )
@@ -15,9 +15,10 @@ In order to run the tutorial we recommend that you:
 ```
 git clone  https://github.com/lmoneta/tmva-tutorial.git
 ```
-* The tutorials will be in the directory *notebooks*. Older tutorials can be retrieved using the corresponding existing git branches
+* The tutorials will be in the directory *notebooks*. Older tutorials could be retrieved using the corresponding git branches
 
-* The notebooks used in this tutorial use C++. A similar version using  Python interface of ROOT (PyROOT) and the Javascript based extension for notebook, `JSMVA` was done at the IML tutorial in 2017. they are available under the tutorial_IML2017 directory. (see also https://indico.cern.ch/event/595059 )
+* The notebooks used in this tutorial use either  C++ or Python. Python notebooks have the suffix *_py*  appended to their name. In some case a corresponding ROOT macro is available, which can  run
+directly from the ROOT prompt. The macro are just an example how one can create easly a ROOT macro or a Python script from a given C++ or Python based notebook. 
 
 * More notebooks, some written also in Python, are available in the Machine Learning Gallery of SWAN, https://swan.web.cern.ch/content/machine-learning
 
@@ -38,7 +39,7 @@ In that case you need to feel this form to get access to the account, https://do
 We will provide you the account name and password. 
 
 * For using the new Deep Learning features of TMVA (e.g. CNN) one needs now to use the *Development Bleeding Edge* Version of SWAN which is built using the current ROOT master version.
-There is a known issue with that version now, and you might need to add this line at the beginning of the notebook:  **gSystem->Load("libblas.so")**
+
 
 * If you think think the Jupyter notebook is stuck, open a terminal on swan and execute `top`: if the cpu is not being used (0%) by any of your processes, you may have to restart the Jupyter
 kernel.
@@ -46,7 +47,6 @@ kernel.
 
 **IMPORTANT:**    
 * Please only have one notebook at the time on swan (you have to select the "running" tab and shutdown the notebook when done)
-* Please avoid Chrome, it has known problems restarting kernels.
 * Limit the number of events you use on swan (order 10000-100000) and the avoid expensive methods: *SWAN is meant for fast prototyping*. 
-     * Each swan container has 2 GB of ram assigned, using the full dataset may hit the memory limit.
+     * Each swan container has 2 GB of ram assigned, using a dataset with too many events may hit the memory limit.
 
