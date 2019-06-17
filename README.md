@@ -23,7 +23,7 @@ Here we provide the step by step instructions on how to start working in SWAN.
 
 *   Click on the following link
 
-[![SWAN](http://swanserver.web.cern.ch/swanserver/images/badge_swan_white_150.png)](https://cern.ch/swanserver/cgi-bin/go?projurl=https://github.com/lmoneta/ml-tutorial-EIROforum)
+[![SWAN](http://swanserver.web.cern.ch/swanserver/images/badge_swan_white_150.png)](https://cern.ch/swanserver/cgi-bin/go?projurl=https://github.com/lmoneta/tmva-tutorial.git)
 
 *  When starting SWAN a page appear to configure the environment. It is recommended to select the the default **95a** or **95a Python3** software stack.
 For the other configuration parameters you can use the default values.
