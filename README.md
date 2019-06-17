@@ -69,16 +69,6 @@ If you are using your own computer
 
 
 
-* The notebooks used in this tutorial use either  C++ or Python. Python notebooks have the suffix *_py*  appended to their name. In some case a corresponding ROOT macro is available, which can  run
-directly from the ROOT prompt. The macro are just an example how one can create easly a ROOT macro or a Python script from a given C++ or Python based notebook. 
-
-* More notebooks, some written also in Python, are available in the Machine Learning Gallery of SWAN, https://swan.web.cern.ch/content/machine-learning
-
-* Additional  tutorials of TMVA are available in the `tutorials/tmva` directory of the main ROOT git repository. You can find them also here https://root.cern.ch/doc/master/group__tutorial__tmva.html
-
-* The updated TMVA Users Guide is available at https://root.cern.ch/download/doc/tmva/TMVAUsersGuide.pdf
-
-
 ## SWAN and Jupyter notebooks quick start ##
 
 Once you have access to the notebooks, after having open them, you can run interactively the code. The notebooks are capable of running code in a wide range of languages. However in this tutorial we will use the Python language. 
@@ -100,6 +90,16 @@ For getting the login credential of the temporary CERN accounts you need to sign
 
 
 ## Some Important notes
+
+* The notebooks used in this tutorial use either  C++ or Python. Python notebooks have the suffix *_py*  appended to their name. In some case a corresponding ROOT macro is available, which can  run
+directly from the ROOT prompt. The macro are just an example how one can create easly a ROOT macro or a Python script from a given C++ or Python based notebook. 
+
+* More notebooks, some written also in Python, are available in the Machine Learning Gallery of SWAN, https://swan.web.cern.ch/content/machine-learning
+
+* Additional  tutorials of TMVA are available in the `tutorials/tmva` directory of the main ROOT git repository. You can find them also here https://root.cern.ch/doc/master/group__tutorial__tmva.html
+
+* The updated TMVA Users Guide is available at https://root.cern.ch/download/doc/tmva/TMVAUsersGuide.pdf
+
 
 * For using some of the latest new Deep Learning features of TMVA (e.g. CNN) one needs now to use the *Development Bleeding Edge* Version of SWAN which is built using the current ROOT master version.
 
