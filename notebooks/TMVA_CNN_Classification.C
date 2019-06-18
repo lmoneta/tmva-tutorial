@@ -182,9 +182,9 @@ void TMVA_CNN_Classification() {
       dnnOptions.Append (":"); dnnOptions.Append (layoutString);
       dnnOptions.Append (":"); dnnOptions.Append (trainingStrategyString);
 
-#ifdef R__HAS_GPU
+#ifdef R__HAS_TMVAGPU
       dnnOptions += ":Architecture=GPU";
-#elif defined( R__HAS_CPU)
+#elif defined( R__HAS_TMVACPU)
       dnnOptions += ":Architecture=CPU";
 #else
       dnnOptions += ":Architecture=Standard";
@@ -239,26 +239,30 @@ void TMVA_CNN_Classification() {
 
 
           // Training strategies.
-          TString training0("LearningRate=e-3,Momentum=0.9,Repetitions=1,"
-         "ConvergenceSteps=10,BatchSize=128,TestRepetitions=1,"
-         "MaxEpochs=30,WeightDecay=1e-4,Regularization=None,"
-         "Optimizer=ADAM,DropConfig=0.0+0.0+0.0+0.0");
+          TString training0("LearningRate=1.e-3,Momentum=0.9,Repetitions=1,"
+                            "ConvergenceSteps=10,BatchSize=128,TestRepetitions=1,"
+                            "MaxEpochs=30,WeightDecay=1e-4,Regularization=None,"
+                            "Optimizer=ADAM,DropConfig=0.0+0.0+0.0+0.0");
  
           TString trainingStrategyString ("TrainingStrategy=");
-          trainingStrategyString += training0; // + "|" + training1 + "|" + training2;   }
+          trainingStrategyString += training0; 
     
 // General Options.
           TString cnnOptions ("!H:V:ErrorStrategy=CROSSENTROPY:VarTransform=None:"
-         "WeightInitialization=XAVIER");
+                              "WeightInitialization=XAVIER");
 
           cnnOptions.Append(":"); cnnOptions.Append(inputLayoutString);
           cnnOptions.Append(":"); cnnOptions.Append(batchLayoutString);
           cnnOptions.Append(":"); cnnOptions.Append(layoutString);
           cnnOptions.Append(":"); cnnOptions.Append(trainingStrategyString);
+#ifdef R__HAS_TMVAGPU
+          // use GPU if available
           cnnOptions.Append(":Architecture=GPU");
+#else
+          cnnOptions.Append(":Architecture=CPU");
+#endif
 
-      //// New DL (CNN)
-
+          //// New DL (CNN)
 
           factory.BookMethod(loader, TMVA::Types::kDL, "DL_CNN", cnnOptions);
       }
@@ -270,7 +274,7 @@ void TMVA_CNN_Classification() {
 
       if (useKeras) { 
       factory.BookMethod(loader, TMVA::Types::kPyKeras, 
-         "PyKeras","H:!V:VarTransform=None:FilenameModel=model_cnn.h5:"
+         "PyKeras","H:!V:VarTransform=None:FilenameModel=model_cnn.h5:GpuOptions=allow_growth=True:"
          "FilenameTrainedModel=trained_model_cnn.h5:NumEpochs=20:BatchSize=128");
    }
 
