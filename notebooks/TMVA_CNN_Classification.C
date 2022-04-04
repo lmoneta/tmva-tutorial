@@ -23,7 +23,12 @@
 
 **/
 
-void TMVA_CNN_Classification() { 
+void TMVA_CNN_Classification(int type = 15) { 
+
+   bool useKeras = type & 1;
+   bool useCNN = type & 2;
+   bool useDNN = type & 4;
+   bool useBDT = type & 8;
 
    TMVA::Tools::Instance();
 
@@ -132,6 +137,72 @@ void TMVA_CNN_Classification() {
 
    signalTree->Print();
 
+/**
+
+    inspect the tree and plot images using RDataFrame 
+ **/
+
+   ROOT::RDataFrame dfs(*signalTree);
+   ROOT::RDataFrame dfb(*backgroundTree);
+
+   std::vector<std::string> varNames = dfs.GetColumnNames();
+
+   auto signalTensor = TMVA::Experimental::AsTensor<float>(dfs);
+   auto backgroundTensor = TMVA::Experimental::AsTensor<float>(dfb);
+   auto shapeS = signalTensor.GetShape();
+   auto shapeB = backgroundTensor.GetShape();
+   // TMVA::Experimental::RTensor::Slice_t slice = { 0, -1 } ;
+   auto firstEventS =  signalTensor.Slice( { {0,1}, {0,64} } );
+   auto firstEventB = backgroundTensor.Slice( { {0,1}, {0,64} } );
+   std::cout << "RTensor from an RDataFrame: signal shape  " << shapeS[0] << " , " << shapeS[1] << "\n" <<  firstEventS << "\n\n";
+   std::cout << "RTensor from an RDataFrame: background shape  " << shapeB[0] << " , " << shapeB[1] << "\n" <<  firstEventB << "\n\n";
+
+
+   auto hS = new TH2F("hs","Signal image (first event)",8,0,8,8,0,8); 
+   auto hB = new TH2F("hb","Background image (first event)",8,0,8,8,0,8);
+   auto hSa = new TH2F("hsa","Signal image (average)",8,0,8,8,0,8); 
+   auto hBa = new TH2F("hba","Background image (average)",8,0,8,8,0,8);
+   auto x0S = firstEventS.Reshape( { 8,8} );
+   auto x0B = firstEventB.Reshape( { 8,8} );
+   for (int i = 0; i < 8; ++i) { 
+      for (int j = 0; j < 8; ++j) {
+         std::vector<size_t> index(2);
+         index[0] = i;
+         index[1] = j; 
+         hS->Fill(i+0.2, j+0.2, x0S( index ) );
+         hB->Fill(i+0.2, j+0.2, x0B( index ) );
+      }
+   }
+   auto c = new TCanvas();
+   c->Divide(2,2);
+   c->cd(1);
+   hS->Draw("COLZ");
+   c->cd(2);
+   hB->Draw("COLZ");
+
+   // make average image plots
+   int nevtS = shapeS[0];
+   int nevtB = shapeB[0];
+   int nevt = std::min(nevtS, nevtB);
+   for (int evt = 0; evt < nevt; ++evt) { 
+      for (int i = 0; i < 8; ++i) { 
+         for (int j = 0; j < 8; ++j) {
+            float * xS = signalTensor.GetData(); 
+            float * xB = backgroundTensor.GetData();
+            size_t index = evt*64 + i *8 + j;
+            hSa->Fill(i+0.2, j+0.2, xS[index]/nevt );
+            hBa->Fill(i+0.2, j+0.2, xB[index]/nevt );
+         }
+      }
+   }
+   c->cd(3); 
+   hSa->Draw("COLZ"); 
+   c->cd(4); 
+   hBa->Draw("COLZ");
+
+   c->Update(); 
+
+
 /****
      # Booking Methods
 
@@ -140,9 +211,10 @@ void TMVA_CNN_Classification() {
 **/
 
 //Boosted Decision Trees
-   factory.BookMethod(loader,TMVA::Types::kBDT, "BDT",
-                      "!V:NTrees=800:MinNodeSize=2.5%:MaxDepth=2:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
-
+   if (useBDT) { 
+      factory.BookMethod(loader,TMVA::Types::kBDT, "BDT",
+                         "!V:NTrees=800:MinNodeSize=2.5%:MaxDepth=2:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
+   }
 /**
 
    #### Booking Deep Neural Network
@@ -150,11 +222,6 @@ void TMVA_CNN_Classification() {
    Here we book the DNN of TMVA. See the example TMVA_Higgs_Classification.C for a detailed description of the options
 
 **/
-
-
-   bool useDNN = true; 
-   bool useCNN = true; 
-   bool useKeras = true; 
 
 
    if (useDNN) { 
@@ -185,7 +252,7 @@ void TMVA_CNN_Classification() {
 #ifdef R__HAS_TMVAGPU
       dnnOptions += ":Architecture=GPU";
 #elif defined( R__HAS_TMVACPU)
-      dnnOptions += ":Architecture=CPU";
+      dnnOptions += ":Architecture=GPU";
 #else
       dnnOptions += ":Architecture=Standard";
 #endif
@@ -234,7 +301,7 @@ void TMVA_CNN_Classification() {
 
 
           TString layoutString("Layout=CONV|10|3|3|1|1|1|1|RELU,CONV|10|3|3|1|1|1|1|RELU,MAXPOOL|2|2|2|2,"
-         "RESHAPE|FLAT,DENSE|64|TANH,DENSE|1|LINEAR");
+         "RESHAPE|FLAT,DENSE|64|SIGMOID,DENSE|1|LINEAR");
 
 
 

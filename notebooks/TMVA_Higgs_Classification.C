@@ -22,6 +22,19 @@ void TMVA_Higgs_Classification() {
 
    TMVA::Tools::Instance();
 
+   bool useKeras = true; 
+
+   // for using Keras
+   if (useKeras) { 
+      gSystem->Setenv("KERAS_BACKEND","tensorflow");
+      TMVA::PyMethodBase::PyInitialize();
+   }
+      
+   // do enable MT running
+   ROOT::EnableImplicitMT(); 
+
+  // for setting openblas in single thread 
+   //gSystem->Setenv("OMP_NUM_THREADS","1"); 
 
    auto outputFile = TFile::Open("Higgs_ClassificationOutput.root", "RECREATE");
 
@@ -139,7 +152,7 @@ and a shallow neural network
    useDLCPU = true;
 #endif
 #ifdef R__HAS_TMVAGPU
-   useDLGPU = true;
+   //useDLGPU = true;
 #endif
 
    /***
@@ -207,7 +220,7 @@ We can then book the DL method using the built otion string
       // Define DNN layout
       TString inputLayoutString = "InputLayout=1|1|7"; 
       TString batchLayoutString= "BatchLayout=1|128|7";
-      TString layoutString ("Layout=DENSE|64|TANH,DENSE|64|TANH,DENSE|64|TANH,DENSE|64|TANH,DENSE|1|LINEAR");
+      TString layoutString ("Layout=DENSE|64|TANH,BNORM|0.99|0.0001,DENSE|64|TANH,BNORM|0.99|0.0001,DENSE|64|TANH,BNORM|0.99|0.0001,DENSE|64|TANH,DENSE,BNORM|0.99|0.0001,DENSE|1|LINEAR");
       // Define Training strategies 
       // one can catenate several training strategies 
       TString training1("LearningRate=1e-3,Momentum=0.9,Repetitions=1,"
@@ -237,6 +250,14 @@ We can then book the DL method using the built otion string
          dnnOptions += ":Architecture=CPU";
       factory.BookMethod(loader, TMVA::Types::kDL, "DL_CPU", dnnOptions);
 
+   }
+
+   if (useKeras) {
+
+       TString kerasOptions = "H:!V:FilenameModel=model_dense.h5:FilenameTrainedModel=trained_model_dense.h5:"
+                              "NumEpochs=20:BatchSize=128:VarTransform=None:ValidationSize=0.25";
+
+       factory.BookMethod(loader, TMVA::Types::kPyKeras,"DNN_KERAS",kerasOptions);
    }
 
    /**
